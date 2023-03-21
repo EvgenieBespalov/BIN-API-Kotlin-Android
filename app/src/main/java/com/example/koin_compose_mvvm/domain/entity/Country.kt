@@ -6,7 +6,6 @@ data class Country(
     val name: String? = null,
     val emoji: String? = null,
     val currency: String? = null,
-    val latitude: Int? = null,
-    val longitude: Int? = null
+    val coordinates: String? = null
 )
 
