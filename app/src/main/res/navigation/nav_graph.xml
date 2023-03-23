@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/findBinFragment">
+
+    <fragment
+        android:id="@+id/findBinFragment"
+        android:name="com.example.koin_compose_mvvm.screen.FindBinFragment"
+        android:label="FindBinFragment" >
+        <action
+            android:id="@+id/action_findBinFragment_to_binHistoryFragment"
+            app:destination="@id/binHistoryFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/binHistoryFragment"
+        android:name="com.example.koin_compose_mvvm.screen.BinHistoryFragment"
+        android:label="BinHistoryFragment" />
+</navigation>
