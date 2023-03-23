@@ -21,17 +21,13 @@ class MainActivity : AppCompatActivity() {
         viewPager = findViewById(R.id.pager)
         viewPager.adapter = adapter
 
-         //val viewPager = findViewById<ViewPager>(R.id.pager)
-         //viewPager.adapter = SectionsPageAdapter(this)
-
-         // Передаём ViewPager в TabLayout
-
-         // Передаём ViewPager в TabLayout
          val tabLayout = findViewById<TabLayout>(R.id.tabs)
-         //tabLayout.setupWithViewPager(viewPager)
 
         TabLayoutMediator(tabLayout, viewPager) { tab, position ->
-            tab.text = "OBJECT ${(position + 1)}"
+            tab.text = when(position){
+                1 -> "Find BIN"
+                else -> "History"
+            }
         }.attach()
     }
 }
