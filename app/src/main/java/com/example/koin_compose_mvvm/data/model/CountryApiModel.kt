@@ -1,6 +1,6 @@
 package com.example.koin_compose_mvvm.data.model
 
-data class Country(
+data class CountryApiModel(
     var numeric: String? = null,
     var alpha2: String? = null,
     val name: String? = null,

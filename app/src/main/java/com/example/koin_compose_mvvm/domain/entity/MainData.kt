@@ -1,7 +1,6 @@
 package com.example.koin_compose_mvvm.domain.entity
 
-data class Bin(
-    var bin: String? = null,
+data class MainData(
     var scheme: String? = null,
     var number: Number,
     var type: String? = null,
