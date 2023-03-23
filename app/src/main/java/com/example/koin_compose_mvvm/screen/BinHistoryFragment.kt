@@ -9,6 +9,7 @@ import android.widget.TextView
 import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
 import com.example.koin_compose_mvvm.R
+import com.example.koin_compose_mvvm.presentation.BinHistoryUiState
 import com.example.koin_compose_mvvm.presentation.BinHistoryViewModel
 import com.example.koin_compose_mvvm.presentation.FindBinUiState
 import com.example.koin_compose_mvvm.presentation.FindBinViewModel
@@ -30,9 +31,9 @@ class BinHistoryFragment : Fragment(R.layout.fragment_bin_history)  {
         //setListeners()
     }
 
-    private fun handleState(state: FindBinUiState) {
+    private fun handleState(state: BinHistoryUiState) {
         when (state) {
-            FindBinUiState.Initial    -> showContent()
+            BinHistoryUiState.Initial    -> showContent()
         }
     }
 
