@@ -2,8 +2,10 @@ package com.example.koin_compose_mvvm.data.api
 
 import com.example.koin_compose_mvvm.domain.entity.MainData
 import retrofit2.http.GET
+import retrofit2.http.Path
+import retrofit2.http.Query
 
 interface BinApi {
-    @GET("/")
-    suspend fun getData(bin: Int): MainData
+    @GET("/{bin}")
+    suspend fun getData(@Path("bin") bin: Int): MainData
 }

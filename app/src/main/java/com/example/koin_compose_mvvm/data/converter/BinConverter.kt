@@ -12,10 +12,21 @@ class BinConverter {
             scheme = from.scheme,
             type = from.type,
             brand = from.brand,
-            prepaid = from.prepaid,
+            prepaid = when(from.prepaid){
+                true -> "Yes"
+                false -> "No"
+                else -> "Non"
+            },
             number = Number(
-                length = from.numberApiModel.length,
-                luhn = from.numberApiModel.luhn
+                length = when(from.numberApiModel.length){
+                    null -> "Non"
+                    else -> from.numberApiModel.length.toString()
+                                                         },
+                luhn = when(from.numberApiModel.luhn){
+                    true -> "Yes"
+                    false -> "No"
+                    else -> "Non"
+                }
             ),
             country = Country(
                 numeric = from.countryApiModel.numeric,
