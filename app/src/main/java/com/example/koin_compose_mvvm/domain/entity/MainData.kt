@@ -5,7 +5,7 @@ data class MainData(
     var number: Number,
     var type: String? = null,
     var brand: String? = null,
-    var prepaid: String,
+    var prepaid: String? = null,
     var country: Country,
     var bank: Bank
 )

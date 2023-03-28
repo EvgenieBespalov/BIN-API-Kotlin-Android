@@ -1,4 +1,4 @@
-package com.example.koin_compose_mvvm.data.model
+package com.example.koin_compose_mvvm.data.model.api
 
 data class BankApiModel(
     val name: String? = null,

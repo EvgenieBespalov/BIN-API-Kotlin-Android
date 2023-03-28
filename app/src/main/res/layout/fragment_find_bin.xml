@@ -3,9 +3,9 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="screen.FindBinFragment">
-
-
+    tools:context="screen.FindBinFragment"
+    android:paddingVertical="16dp"
+    android:paddingHorizontal="16dp">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -14,7 +14,7 @@
         android:gravity="center_horizontal">
 
         <EditText
-            android:id="@+id/binCards"
+            android:id="@+id/binCardEditText"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:gravity="center"
@@ -24,299 +24,257 @@
             android:text=""/>
 
         <ProgressBar
-            android:id="@+id/progressBar"
+            android:id="@+id/binCardProgressBar"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:visibility="gone" />
 
         <TextView
-            android:id="@+id/errorText"
+            android:id="@+id/binCardErrorText"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:visibility="gone" />
 
         <LinearLayout
-            android:id="@+id/filterFindBin"
+            android:id="@+id/findBinFragmentContent"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:orientation="vertical"
-            android:gravity="center_horizontal">
-
-            <TextView
-                android:textSize="20dp"
-                android:textColor="@color/black"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:gravity="center"
-                android:text="BANK" />
+            android:orientation="vertical">
 
             <LinearLayout
+                android:id="@+id/bankNameContent"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal">
                 <TextView
                     android:textSize="20dp"
                     android:textColor="@color/black"
-                    android:layout_weight="0.5"
-                    android:layout_width="match_parent"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:gravity="center"
-                    android:text="Name"/>
+                    android:text="Bank name: "/>
                 <TextView
+                    android:id="@+id/bankNameTextView"
                     android:textSize="20dp"
                     android:textColor="@color/black"
-                    android:layout_weight="0.5"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:gravity="center"
-                    android:text="City" />
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"/>
             </LinearLayout>
             <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal">
-                <TextView
-                    android:textSize="20dp"
-                    android:id="@+id/bankName"
-                    android:layout_weight="0.5"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:gravity="center"
-                    android:text=""/>
-                <TextView
-                    android:textSize="20dp"
-                    android:id="@+id/cityOfBank"
-                    android:layout_weight="0.5"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:gravity="center"
-                    android:text="" />
-            </LinearLayout>
-            <LinearLayout
+                android:id="@+id/bankCityContent"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal">
                 <TextView
                     android:textSize="20dp"
                     android:textColor="@color/black"
-                    android:layout_weight="0.5"
-                    android:layout_width="match_parent"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:gravity="center"
-                    android:text="Site"/>
+                    android:text="Bank city: " />
+                <TextView
+                    android:id="@+id/bankCityTextView"
+                    android:textSize="20dp"
+                    android:textColor="@color/black"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"/>
+            </LinearLayout>
+            <LinearLayout
+                android:id="@+id/bankSiteContent"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
                 <TextView
                     android:textSize="20dp"
                     android:textColor="@color/black"
-                    android:layout_weight="0.5"
-                    android:layout_width="match_parent"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:gravity="center"
-                    android:text="Phone"/>
-
+                    android:text="Bank site: "/>
+                <TextView
+                    android:id="@+id/bankSiteTextView"
+                    android:textSize="20dp"
+                    android:textColor="@color/black"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"/>
             </LinearLayout>
             <LinearLayout
+                android:id="@+id/bankPhoneContent"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal">
                 <TextView
                     android:textSize="20dp"
-                    android:textColor="#3F51B5"
-                    android:layout_weight="0.5"
-                    android:id="@+id/siteOfBank"
-                    android:layout_width="match_parent"
+                    android:textColor="@color/black"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:gravity="center"
-                    android:text=""/>
+                    android:text="Bank phone: "/>
                 <TextView
+                    android:id="@+id/bankPhoneTextView"
                     android:textSize="20dp"
-                    android:textColor="#3F51B5"
-                    android:layout_weight="0.5"
-                    android:id="@+id/numberPhoneOfBank"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:gravity="center"
-                    android:text="" />
+                    android:textColor="@color/black"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"/>
             </LinearLayout>
             <LinearLayout
+                android:id="@+id/schemeNetworkContent"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal">
-                <LinearLayout
-                    android:gravity="center"
-                    android:layout_width="match_parent"
+                <TextView
+                    android:textSize="20dp"
+                    android:textColor="@color/black"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_weight="0.5"
-                    android:orientation="vertical">
-                    <TextView
-                        android:textSize="20dp"
-                        android:textColor="@color/black"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="Scheme/Network"
-                        android:gravity="top"/>
-                    <TextView
-                        android:textSize="20dp"
-                        android:id="@+id/schemeOfBank"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text=""
-                        android:gravity="top"/>
-                    <TextView
-                        android:textSize="20dp"
-                        android:textColor="@color/black"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="Brand"
-                        android:gravity="top"/>
-                    <TextView
-                        android:textSize="20dp"
-                        android:id="@+id/brand"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text=""
-                        android:gravity="top"/>
-                    <TextView
-                        android:textSize="20dp"
-                        android:textColor="@color/black"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="Card number"
-                        android:gravity="top"/>
-                    <LinearLayout
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:orientation="horizontal">
-                        <LinearLayout
-                            android:layout_width="match_parent"
-                            android:layout_height="match_parent"
-                            android:orientation="vertical">
-                            <TextView
-                                android:textSize="18dp"
-                                android:textColor="@color/black"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:text="Length"
-                                android:gravity="top"/>
-                            <TextView
-                                android:textSize="18dp"
-                                android:id="@+id/length"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:text=""
-                                android:gravity="top"/>
-                        </LinearLayout>
-                        <LinearLayout
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:orientation="vertical">
-                            <TextView
-                                android:textSize="18dp"
-                                android:textColor="@color/black"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:text = " Luhn"
-                                android:gravity = "top"/>
-                            <TextView
-                                android:textSize="18dp"
-                                android:id="@+id/luhn"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:text=""
-                                android:gravity="top"/>
-                        </LinearLayout>
-                    </LinearLayout>
-
-                </LinearLayout>
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_weight="0.5"
+                    android:text="Scheme/Network: "/>
+                <TextView
+                    android:id="@+id/schemeNetworkTextView"
+                    android:textSize="20dp"
+                    android:textColor="@color/black"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"/>
+            </LinearLayout>
+            <LinearLayout
+                android:id="@+id/brandContent"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+                <TextView
+                    android:textSize="20dp"
+                    android:textColor="@color/black"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:gravity="center"
-                    android:orientation="vertical">
-
-                    <TextView
-                        android:textSize="20dp"
-                        android:textColor="@color/black"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="Type"
-                        android:gravity="top"/>
-                    <TextView
-                        android:textSize="20dp"
-                        android:id="@+id/type"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text=""
-                        android:gravity="top"/>
-                    <TextView
-                        android:textSize="20dp"
-                        android:textColor="@color/black"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="Prepaid"
-                        android:gravity="top"/>
-                    <TextView
-                        android:textSize="20dp"
-                        android:id="@+id/prepaid"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text=""
-                        android:gravity="top"/>
-                    <TextView
-                        android:textSize="20dp"
-                        android:textColor="@color/black"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="Country"
-                        android:gravity="top"/>
-                    <LinearLayout
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:orientation="horizontal">
-                        <TextView
-                            android:textSize="20dp"
-                            android:id="@+id/emoji"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text=""
-                            android:gravity="top"/>
-                        <TextView
-                            android:textSize="20dp"
-                            android:textColor="#3F51B5"
-                            android:id="@+id/country"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text=""
-                            android:gravity="top"/>
-                    </LinearLayout>
-                    <LinearLayout
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:orientation="vertical">
-                        <LinearLayout
-                            android:layout_width="match_parent"
-                            android:layout_height="match_parent"
-                            android:orientation="horizontal">
-                            <TextView
-                                android:textSize="18dp"
-                                android:textColor="@color/black"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:text="coordinates: "
-                                android:gravity="top"/>
-                            <TextView
-                                android:textSize="18dp"
-                                android:id="@+id/coordinates"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:text=""
-                                android:gravity="top"/>
-                        </LinearLayout>
-                    </LinearLayout>
-                </LinearLayout>
+                    android:text="Brand: "/>
+                <TextView
+                    android:id="@+id/brandTextView"
+                    android:textSize="20dp"
+                    android:textColor="@color/black"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"/>
+            </LinearLayout>
+            <LinearLayout
+                android:id="@+id/cardLengthContent"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+                <TextView
+                    android:textSize="20dp"
+                    android:textColor="@color/black"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Card number length: "/>
+                <TextView
+                    android:id="@+id/cardLengthTextView"
+                    android:textSize="20dp"
+                    android:textColor="@color/black"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"/>
+            </LinearLayout>
+            <LinearLayout
+                android:id="@+id/cardLuhnContent"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+                <TextView
+                    android:textSize="20dp"
+                    android:textColor="@color/black"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text = "Card number luhn: "/>
+                <TextView
+                    android:id="@+id/cardLuhnTextView"
+                    android:textSize="20dp"
+                    android:textColor="@color/black"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"/>
+            </LinearLayout>
+            <LinearLayout
+                android:id="@+id/typeContent"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+                <TextView
+                    android:textSize="20dp"
+                    android:textColor="@color/black"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Type: "/>
+                <TextView
+                    android:id="@+id/typeTextView"
+                    android:textSize="20dp"
+                    android:textColor="@color/black"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"/>
+            </LinearLayout>
+            <LinearLayout
+                android:id="@+id/prepaidContent"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+                <TextView
+                    android:textSize="20dp"
+                    android:textColor="@color/black"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Prepaid: "/>
+                <TextView
+                    android:id="@+id/prepaidTextView"
+                    android:textSize="20dp"
+                    android:textColor="@color/black"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"/>
+            </LinearLayout>
+            <LinearLayout
+                android:id="@+id/countryNameContent"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+                <TextView
+                    android:textSize="20dp"
+                    android:textColor="@color/black"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Country name: "/>
+                <TextView
+                    android:id="@+id/countryNameTextView"
+                    android:textSize="20dp"
+                    android:textColor="@color/black"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"/>
+                <TextView
+                    android:id="@+id/countryEmojiTextView"
+                    android:textSize="20dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"/>
+            </LinearLayout>
+            <LinearLayout
+                android:id="@+id/countryLatitudeContent"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+                <TextView
+                    android:textSize="20dp"
+                    android:textColor="@color/black"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Country coornidate: "/>
+                <TextView
+                    android:id="@+id/countryLatitudeTextView"
+                    android:textSize="20dp"
+                    android:textColor="@color/black"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"/>
+                <TextView
+                    android:textSize="20dp"
+                    android:textColor="@color/black"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text=", "/>
+                <TextView
+                    android:id="@+id/countryLongitudeTextView"
+                    android:textSize="20dp"
+                    android:textColor="@color/black"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"/>
             </LinearLayout>
         </LinearLayout>
     </LinearLayout>

@@ -1,7 +1,5 @@
 package com.example.koin_compose_mvvm.screen
 
-import android.content.Intent
-import android.net.Uri
 import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
@@ -10,40 +8,47 @@ import android.widget.*
 import androidx.core.view.isVisible
 import org.koin.androidx.viewmodel.ext.android.viewModel
 import androidx.fragment.app.Fragment
-import androidx.recyclerview.widget.RecyclerView
 import com.example.koin_compose_mvvm.R
 import com.example.koin_compose_mvvm.domain.entity.MainData
 import com.example.koin_compose_mvvm.presentation.FindBinUiState
 import com.example.koin_compose_mvvm.presentation.FindBinViewModel
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.GlobalScope
-import kotlinx.coroutines.launch
-import kotlinx.coroutines.withContext
-import java.io.FileNotFoundException
-import java.net.URL
 
 class FindBinFragment : Fragment(R.layout.fragment_find_bin)  {
-    private val progressBar get() = requireView().findViewById<ProgressBar>(R.id.progressBar)
-    private val errorText get() = requireView().findViewById<TextView>(R.id.errorText)
-    private val filterFindBinContent get() = requireView().findViewById<LinearLayout>(R.id.filterFindBin)
+    private val progressBar get() = requireView().findViewById<ProgressBar>(R.id.binCardProgressBar)
+    private val errorText get() = requireView().findViewById<TextView>(R.id.binCardErrorText)
+
+    private val findBinFragmentContent get() = requireView().findViewById<LinearLayout>(R.id.findBinFragmentContent)
+
+    private val bankNameContent get() = requireView().findViewById<LinearLayout>(R.id.bankNameContent)
+    private val bankCityContent get() = requireView().findViewById<LinearLayout>(R.id.bankCityContent)
+    private val bankSiteContent get() = requireView().findViewById<LinearLayout>(R.id.bankSiteContent)
+    private val bankPhoneContent get() = requireView().findViewById<LinearLayout>(R.id.bankPhoneContent)
+    private val schemeNetworkContent get() = requireView().findViewById<LinearLayout>(R.id.schemeNetworkContent)
+    private val brandContent get() = requireView().findViewById<LinearLayout>(R.id.brandContent)
+    private val cardLengthContent get() = requireView().findViewById<LinearLayout>(R.id.cardLengthContent)
+    private val cardLuhnContent get() = requireView().findViewById<LinearLayout>(R.id.cardLuhnContent)
+    private val typeContent get() = requireView().findViewById<LinearLayout>(R.id.typeContent)
+    private val prepaidContent get() = requireView().findViewById<LinearLayout>(R.id.prepaidContent)
+    private val countryNameContent get() = requireView().findViewById<LinearLayout>(R.id.countryNameContent)
+    private val countryLatitudeContent get() = requireView().findViewById<LinearLayout>(R.id.countryLatitudeContent)
 
     private val viewModel: FindBinViewModel by viewModel()
 
-    private val binCards get() = requireView().findViewById<EditText>(R.id.binCards)
-    private val bankName get() = requireView().findViewById<TextView>(R.id.bankName)
-    private val cityOfBank get() = requireView().findViewById<TextView>(R.id.cityOfBank)
-    private val siteOfBank get() = requireView().findViewById<TextView>(R.id.siteOfBank)
-
-    private val numberPhoneOfBank get() = requireView().findViewById<TextView>(R.id.numberPhoneOfBank)
-    private val schemeOfBank get() = requireView().findViewById<TextView>(R.id.schemeOfBank)
-    private val brand get() = requireView().findViewById<TextView>(R.id.brand)
-    private val lengthBin get() = requireView().findViewById<TextView>(R.id.length)
-    private val luhn get() = requireView().findViewById<TextView>(R.id.luhn)
-    private val type  get() = requireView().findViewById<TextView>(R.id.type)
-    private val prepaid  get() = requireView().findViewById<TextView>(R.id.prepaid)
-    private val emoji get() = requireView().findViewById<TextView>(R.id.emoji)
-    private val country get() = requireView().findViewById<TextView>(R.id.country)
-    private val coordinates get() = requireView().findViewById<TextView>(R.id.coordinates)
+    private val binCardEditText get() = requireView().findViewById<EditText>(R.id.binCardEditText)
+    private val bankNameTextView get() = requireView().findViewById<TextView>(R.id.bankNameTextView)
+    private val bankCityTextView get() = requireView().findViewById<TextView>(R.id.bankCityTextView)
+    private val bankSiteTextView get() = requireView().findViewById<TextView>(R.id.bankSiteTextView)
+    private val bankPhoneTextView get() = requireView().findViewById<TextView>(R.id.bankPhoneTextView)
+    private val schemeNetworkTextView get() = requireView().findViewById<TextView>(R.id.schemeNetworkTextView)
+    private val brandTextView get() = requireView().findViewById<TextView>(R.id.brandTextView)
+    private val cardLengthTextView get() = requireView().findViewById<TextView>(R.id.cardLengthTextView)
+    private val cardLuhnTextView get() = requireView().findViewById<TextView>(R.id.cardLuhnTextView)
+    private val typeTextView  get() = requireView().findViewById<TextView>(R.id.typeTextView)
+    private val prepaidTextView  get() = requireView().findViewById<TextView>(R.id.prepaidTextView)
+    private val countryEmojiTextView get() = requireView().findViewById<TextView>(R.id.countryEmojiTextView)
+    private val countryNameTextView get() = requireView().findViewById<TextView>(R.id.countryNameTextView)
+    private val countryLatitudeTextView get() = requireView().findViewById<TextView>(R.id.countryLatitudeTextView)
+    private val countryLongitudeTextView get() = requireView().findViewById<TextView>(R.id.countryLongitudeTextView)
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -55,7 +60,7 @@ class FindBinFragment : Fragment(R.layout.fragment_find_bin)  {
     }
 
     private fun setListener(){
-        binCards.addTextChangedListener(object : TextWatcher {
+        binCardEditText.addTextChangedListener(object : TextWatcher {
             override fun afterTextChanged(s: Editable?) {
                 if (s != null && s.length == 8)
                     viewModel.getDataBin(s.toString().toInt())
@@ -78,13 +83,13 @@ class FindBinFragment : Fragment(R.layout.fragment_find_bin)  {
     private fun showProgress() {
         progressBar.isVisible = true
         errorText.isVisible = false
-        filterFindBinContent.isVisible = false
+        findBinFragmentContent.isVisible = false
     }
 
     private fun showError(message: String?) {
         errorText.isVisible = true
         progressBar.isVisible = false
-        filterFindBinContent.isVisible = false
+        findBinFragmentContent.isVisible = false
 
         errorText.text = message ?: requireContext().getText(R.string.unknown_error)
     }
@@ -92,20 +97,59 @@ class FindBinFragment : Fragment(R.layout.fragment_find_bin)  {
     private fun showContent(bin: MainData) {
         progressBar.isVisible = false
         errorText.isVisible = false
-        filterFindBinContent.isVisible = true
+        findBinFragmentContent.isVisible = true
 
-        bankName.setText(bin.bank.name)
-        cityOfBank.setText(bin.bank.city)
-        siteOfBank.setText(bin.bank.url)
-        numberPhoneOfBank.setText(bin.bank.phone)
-        schemeOfBank.setText(bin.scheme)
-        brand.setText(bin.brand)
-        lengthBin.setText(bin.number.length)
-        luhn.setText(bin.number.luhn)
-        type.setText(bin.type)
-        prepaid.setText(bin.prepaid)
-        emoji.setText(bin.country.emoji)
-        country.setText(bin.country.name)
-        coordinates.setText(bin.country.coordinates)
+        when(bin.bank.name){
+            null -> bankNameTextView.isVisible = false
+            else -> bankNameTextView.setText(bin.bank.name)
+        }
+        when(bin.bank.city){
+            null -> bankCityTextView.isVisible = false
+            else -> bankCityTextView.setText(bin.bank.city)
+        }
+        when(bin.bank.url){
+            null -> bankSiteTextView.isVisible = false
+            else -> bankSiteTextView.setText(bin.bank.url)
+        }
+        when(bin.bank.phone){
+            null -> bankPhoneTextView.isVisible = false
+            else -> bankPhoneTextView.setText(bin.bank.phone)
+        }
+        when(bin.scheme){
+            null -> schemeNetworkTextView.isVisible = false
+            else ->  schemeNetworkTextView.setText(bin.scheme)
+        }
+        when(bin.brand){
+            null -> brandTextView.isVisible = false
+            else -> brandTextView.setText(bin.brand)
+        }
+        when(bin.number.luhn){
+            null -> cardLuhnTextView.isVisible = false
+            else -> cardLuhnTextView.setText(bin.number.luhn)
+        }
+        when(bin.type){
+            null -> typeTextView.isVisible = false
+            else -> typeTextView.setText(bin.type)
+        }
+        when(bin.prepaid){
+            null -> prepaidTextView.isVisible = false
+            else -> prepaidTextView.setText(bin.prepaid)
+        }
+        when(bin.country.emoji){
+            null -> countryEmojiTextView.isVisible = false
+            else -> countryEmojiTextView.setText(bin.country.emoji)
+        }
+        when(bin.country.name){
+            null -> countryNameTextView.isVisible = false
+            else -> countryNameTextView.setText(bin.country.name)
+        }
+        when(bin.country.latitude){
+            null -> countryLatitudeTextView.isVisible = false
+            else -> countryLatitudeTextView.setText(bin.country.latitude)
+        }
+        when(bin.country.longitude){
+            null -> countryLongitudeTextView.isVisible = false
+            else -> countryLongitudeTextView.setText(bin.country.longitude)
+        }
     }
 }
