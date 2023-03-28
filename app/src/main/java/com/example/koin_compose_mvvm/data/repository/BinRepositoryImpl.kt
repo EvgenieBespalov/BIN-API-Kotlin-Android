@@ -10,6 +10,6 @@ class BinRepositoryImpl(
     private val converter: BinConverter,
 ) : BinRepository {
     override suspend fun getData(bin: Int): MainData {
-        return BinApi.getData(bin)
+        return converter.convertBin(BinApi.getData(bin))
     }
 }

@@ -18,29 +18,41 @@ class BinConverter {
                 else -> "Non"
             },
             number = Number(
-                length = when(from.numberApiModel.length){
+                length = when(from.number.length){
                     null -> "Non"
-                    else -> from.numberApiModel.length.toString()
+                    else -> from.number.length.toString()
                                                          },
-                luhn = when(from.numberApiModel.luhn){
+                luhn = when(from.number.luhn){
                     true -> "Yes"
                     false -> "No"
                     else -> "Non"
                 }
             ),
             country = Country(
-                numeric = from.countryApiModel.numeric,
-                alpha2 = from.countryApiModel.alpha2,
-                name = from.countryApiModel.name,
-                emoji = from.countryApiModel.emoji,
-                currency = from.countryApiModel.currency,
-                coordinates = from.countryApiModel.latitude.toString() + ", " + from.countryApiModel.longitude.toString()
+                numeric = from.country.numeric,
+                alpha2 = from.country.alpha2,
+                name = from.country.name,
+                emoji = from.country.emoji,
+                currency = from.country.currency,
+                coordinates = from.country.latitude.toString() + ", " + from.country.longitude.toString()
             ),
             bank = Bank(
-                name = from.bankApiModel.name,
-                url = from.bankApiModel.url,
-                phone = from.bankApiModel.phone,
-                city = from.bankApiModel.city
+                name = when(from.bank.name){
+                    null -> "Non"
+                    else -> from.bank.name
+                },
+                url = when(from.bank.url){
+                    null -> "Non"
+                    else -> from.bank.url
+                },
+                phone = when(from.bank.phone){
+                    null -> "Non"
+                    else -> from.bank.phone
+                },
+                city = when(from.bank.city){
+                    null -> "Non"
+                    else -> from.bank.city
+                },
             )
         )
 
