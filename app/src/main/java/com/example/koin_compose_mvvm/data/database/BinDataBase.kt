@@ -5,7 +5,7 @@ import androidx.room.RoomDatabase
 import com.example.koin_compose_mvvm.data.dao.BinDAO
 import com.example.koin_compose_mvvm.data.model.database.BinDataBaseModel
 
-@Database(entities = [BinDataBaseModel::class], version = 1)
+@Database(entities = [BinDataBaseModel::class], version = 2)
 abstract class BinDataBase : RoomDatabase() {
     abstract fun binDAO() : BinDAO
 }
