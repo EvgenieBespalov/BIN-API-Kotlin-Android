@@ -6,13 +6,14 @@ import com.example.koin_compose_mvvm.domain.entity.Bank
 import com.example.koin_compose_mvvm.domain.entity.Country
 import com.example.koin_compose_mvvm.domain.entity.MainData
 import com.example.koin_compose_mvvm.domain.entity.Number
+import java.text.SimpleDateFormat
 import java.util.Calendar.getInstance
 
 class BinConverter {
     fun convertApiBin(from: MainDataApiModel, bin: String): MainData =
         MainData(
             bin = bin,
-            date = getInstance().toString(),
+            date = SimpleDateFormat("dd.MM.yyyy HH:mm").format(getInstance().time),
             scheme = from.scheme,
             type = from.type,
             brand = from.brand,
@@ -77,7 +78,6 @@ class BinConverter {
 
     fun convertBinToDataBase(from: MainData): BinDataBaseModel =
         BinDataBaseModel(
-            id = "",
             bin = from.bin,
             date = from.date,
             scheme = from.scheme,

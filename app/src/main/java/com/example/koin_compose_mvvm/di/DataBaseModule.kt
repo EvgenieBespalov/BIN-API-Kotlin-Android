@@ -10,7 +10,9 @@ fun provideDataBaseModule(): Module =
     module{
         single {
             Room.databaseBuilder(androidApplication(), BinDataBase::class.java, "bin_db")
+                .fallbackToDestructiveMigration()
                 .build()
+
         }
 
         single { get<BinDataBase>().binDAO() }

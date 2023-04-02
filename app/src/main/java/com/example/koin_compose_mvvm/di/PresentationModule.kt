@@ -10,7 +10,8 @@ fun providePresentationModule(): Module =
     module {
         viewModel {
             FindBinViewModel(
-                getDataBinUseCase = get()
+                getDataBinUseCase = get(),
+                saveBinDataBaseUseCase = get()
             )
         }
 

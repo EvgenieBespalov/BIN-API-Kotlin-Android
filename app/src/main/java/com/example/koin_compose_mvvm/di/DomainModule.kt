@@ -7,6 +7,7 @@ import com.example.koin_compose_mvvm.data.repository.BinRepositoryImpl
 import com.example.koin_compose_mvvm.domain.repository.BinRepository
 import com.example.koin_compose_mvvm.domain.usecase.GetDataBinUseCase
 import com.example.koin_compose_mvvm.domain.usecase.LoadBinAllUseCase
+import com.example.koin_compose_mvvm.domain.usecase.SaveBinDataBaseUseCase
 import org.koin.core.module.Module
 import org.koin.dsl.module
 
@@ -24,4 +25,5 @@ fun provideDomainModule(): Module =
 
         factory { GetDataBinUseCase(repository = get()) }
         factory { LoadBinAllUseCase(repository = get()) }
+        factory { SaveBinDataBaseUseCase(repository = get()) }
     }

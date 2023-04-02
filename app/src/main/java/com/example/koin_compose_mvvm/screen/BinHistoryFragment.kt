@@ -35,6 +35,11 @@ class BinHistoryFragment : Fragment(R.layout.fragment_bin_history)  {
 
         viewModel.state.observe(viewLifecycleOwner, ::handleState)
 
+
+    }
+
+    override fun onResume(){
+        super.onResume()
         viewModel.loadData()
     }
 

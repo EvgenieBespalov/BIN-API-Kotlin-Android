@@ -5,8 +5,7 @@ import androidx.room.PrimaryKey
 
 @Entity(tableName = "bin_data")
 data class BinDataBaseModel(
-    @PrimaryKey
-    val id: String,
+
     val date: String,
     val bin: String,
     val scheme: String? = null,
@@ -28,4 +27,7 @@ data class BinDataBaseModel(
     val urlBank: String? = null,
     val phoneBank: String? = null,
     val cityBank: String? = null
-)
+){
+    @PrimaryKey(autoGenerate = true)
+    var id: Int = 0
+}
