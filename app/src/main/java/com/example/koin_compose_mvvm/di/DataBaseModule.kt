@@ -8,7 +8,10 @@ import org.koin.dsl.module
 
 fun provideDataBaseModule(): Module =
     module{
-        single { Room.databaseBuilder(androidApplication(), BinDataBase::class.java, "bin_db").build() }
+        single {
+            Room.databaseBuilder(androidApplication(), BinDataBase::class.java, "bin_db")
+                .build()
+        }
 
         single { get<BinDataBase>().binDAO() }
     }

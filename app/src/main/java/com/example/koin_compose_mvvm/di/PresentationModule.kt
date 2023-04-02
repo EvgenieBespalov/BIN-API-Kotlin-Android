@@ -15,6 +15,6 @@ fun providePresentationModule(): Module =
         }
 
         viewModel {
-           BinHistoryViewModel()
+           BinHistoryViewModel(loadBinHistoryUseCase =  get())
         }
     }
