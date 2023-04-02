@@ -18,7 +18,6 @@ import org.koin.androidx.viewmodel.ext.android.viewModel
 class BinHistoryFragment : Fragment(R.layout.fragment_bin_history)  {
     private val progressBar get() = requireView().findViewById<ProgressBar>(R.id.progressBar)
     private val errorText get() = requireView().findViewById<TextView>(R.id.errorText)
-    private val filterContent get() = requireView().findViewById<LinearLayout>(R.id.filterFindBin)
 
     private val viewModel: BinHistoryViewModel by viewModel()
 

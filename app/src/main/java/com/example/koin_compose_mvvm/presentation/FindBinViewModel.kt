@@ -21,7 +21,7 @@ class FindBinViewModel (
         }
     }
 
-    fun getDataBin(bin: Int){
+    fun getDataBin(bin: String){
         viewModelScope.launch {
             _state.value = FindBinUiState.Loading
 

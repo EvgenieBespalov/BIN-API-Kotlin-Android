@@ -35,6 +35,7 @@ class FindBinFragment : Fragment(R.layout.fragment_find_bin)  {
     private val viewModel: FindBinViewModel by viewModel()
 
     private val binCardEditText get() = requireView().findViewById<EditText>(R.id.binCardEditText)
+
     private val bankNameTextView get() = requireView().findViewById<TextView>(R.id.bankNameTextView)
     private val bankCityTextView get() = requireView().findViewById<TextView>(R.id.bankCityTextView)
     private val bankSiteTextView get() = requireView().findViewById<TextView>(R.id.bankSiteTextView)
@@ -63,7 +64,7 @@ class FindBinFragment : Fragment(R.layout.fragment_find_bin)  {
         binCardEditText.addTextChangedListener(object : TextWatcher {
             override fun afterTextChanged(s: Editable?) {
                 if (s != null && s.length == 8)
-                    viewModel.getDataBin(s.toString().toInt())
+                    viewModel.getDataBin(s.toString())
             }
 
             override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {}
@@ -100,39 +101,39 @@ class FindBinFragment : Fragment(R.layout.fragment_find_bin)  {
         findBinFragmentContent.isVisible = true
 
         when(bin.bank.name){
-            null -> bankNameTextView.isVisible = false
+            null -> bankNameContent.isVisible = false
             else -> bankNameTextView.setText(bin.bank.name)
         }
         when(bin.bank.city){
-            null -> bankCityTextView.isVisible = false
+            null -> bankCityContent.isVisible = false
             else -> bankCityTextView.setText(bin.bank.city)
         }
         when(bin.bank.url){
-            null -> bankSiteTextView.isVisible = false
+            null -> bankSiteContent.isVisible = false
             else -> bankSiteTextView.setText(bin.bank.url)
         }
         when(bin.bank.phone){
-            null -> bankPhoneTextView.isVisible = false
+            null -> bankPhoneContent.isVisible = false
             else -> bankPhoneTextView.setText(bin.bank.phone)
         }
         when(bin.scheme){
-            null -> schemeNetworkTextView.isVisible = false
+            null -> schemeNetworkContent.isVisible = false
             else ->  schemeNetworkTextView.setText(bin.scheme)
         }
         when(bin.brand){
-            null -> brandTextView.isVisible = false
+            null -> brandContent.isVisible = false
             else -> brandTextView.setText(bin.brand)
         }
         when(bin.number.luhn){
-            null -> cardLuhnTextView.isVisible = false
+            null -> cardLuhnContent.isVisible = false
             else -> cardLuhnTextView.setText(bin.number.luhn)
         }
         when(bin.type){
-            null -> typeTextView.isVisible = false
+            null -> typeContent.isVisible = false
             else -> typeTextView.setText(bin.type)
         }
         when(bin.prepaid){
-            null -> prepaidTextView.isVisible = false
+            null -> prepaidContent.isVisible = false
             else -> prepaidTextView.setText(bin.prepaid)
         }
         when(bin.country.emoji){
@@ -140,8 +141,10 @@ class FindBinFragment : Fragment(R.layout.fragment_find_bin)  {
             else -> countryEmojiTextView.setText(bin.country.emoji)
         }
         when(bin.country.name){
-            null -> countryNameTextView.isVisible = false
-            else -> countryNameTextView.setText(bin.country.name)
+            null -> countryNameContent.isVisible = false
+            else -> {
+                countryNameTextView.setText(bin.country.name)
+                countryEmojiTextView.setText(bin.country.emoji)}
         }
         when(bin.country.latitude){
             null -> countryLatitudeTextView.isVisible = false
