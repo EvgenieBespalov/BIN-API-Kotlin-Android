@@ -26,8 +26,8 @@ class FindBinViewModel (
             _state.value = FindBinUiState.Loading
 
             try {
-                val users = getDataBinUseCase(bin)
-                _state.value = users.let { FindBinUiState.Content(it) }
+                val binData = getDataBinUseCase(bin)
+                _state.value = binData.let { FindBinUiState.Content(it) }
             } catch (rethrow: CancellationException) {
                 throw rethrow
             } catch (ex: Exception) {

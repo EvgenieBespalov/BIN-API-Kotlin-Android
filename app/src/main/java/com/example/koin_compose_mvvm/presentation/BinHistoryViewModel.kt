@@ -4,12 +4,12 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.example.koin_compose_mvvm.domain.usecase.LoadBinHistoryUseCase
+import com.example.koin_compose_mvvm.domain.usecase.LoadBinAllUseCase
 import kotlinx.coroutines.CancellationException
 import kotlinx.coroutines.launch
 
 class BinHistoryViewModel(
-    private val loadBinHistoryUseCase: LoadBinHistoryUseCase
+    private val loadBinAllUseCase: LoadBinAllUseCase
 ) : ViewModel() {
 
     private val _state: MutableLiveData<BinHistoryUiState> = MutableLiveData(BinHistoryUiState.Initial)
@@ -20,7 +20,7 @@ class BinHistoryViewModel(
             _state.value = BinHistoryUiState.Loading
 
             try {
-                val mainData = loadBinHistoryUseCase()
+                val mainData = loadBinAllUseCase()
                 _state.value = mainData.let { BinHistoryUiState.Content(it) }
             } catch (rethrow: CancellationException) {
                 throw rethrow
