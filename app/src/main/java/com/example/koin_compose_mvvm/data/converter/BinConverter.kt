@@ -1,14 +1,16 @@
 package com.example.koin_compose_mvvm.data.converter
 
 import com.example.koin_compose_mvvm.data.model.api.MainDataApiModel
+import com.example.koin_compose_mvvm.data.model.database.BinDataBaseModel
 import com.example.koin_compose_mvvm.domain.entity.Bank
 import com.example.koin_compose_mvvm.domain.entity.Country
 import com.example.koin_compose_mvvm.domain.entity.MainData
 import com.example.koin_compose_mvvm.domain.entity.Number
 
 class BinConverter {
-    fun convertBin(from: MainDataApiModel): MainData =
+    fun convertApiBin(from: MainDataApiModel, bin: String): MainData =
         MainData(
+            bin = bin,
             scheme = from.scheme,
             type = from.type,
             brand = from.brand,
@@ -42,4 +44,56 @@ class BinConverter {
             )
         )
 
+    fun convertDataBaseToBin(from: BinDataBaseModel): MainData =
+        MainData(
+            bin = from.bin,
+            scheme = from.scheme,
+            type = from.type,
+            brand = from.brand,
+            prepaid = from.prepaid,
+            number = Number(
+                length = from.lengthNumber,
+                luhn = from.luhnNumber
+            ),
+            country = Country(
+                numeric = from.numericCountry,
+                alpha2 = from.alpha2Country,
+                name = from.nameCountry,
+                emoji = from.emojiCountry,
+                currency = from.currencyCountry,
+                latitude = from.latitudeCountry,
+                longitude = from.longitudeCountry
+            ),
+            bank = Bank(
+                name = from.nameBank,
+                url = from.urlBank,
+                phone = from.phoneBank,
+                city = from.cityBank
+            )
+        )
+
+    fun convertBinToDataBase(from: MainData): BinDataBaseModel =
+        BinDataBaseModel(
+            id = "",
+            bin = from.bin,
+            scheme = from.scheme,
+            lengthNumber = from.number.length,
+            luhnNumber = from.number.luhn,
+            type = from.type,
+            brand = from.brand,
+            prepaid = from.prepaid,
+
+            numericCountry = from.country.numeric,
+            alpha2Country = from.country.alpha2,
+            nameCountry = from.country.name,
+            emojiCountry = from.country.emoji,
+            currencyCountry = from.country.currency,
+            latitudeCountry = from.country.latitude,
+            longitudeCountry = from.country.longitude,
+
+            nameBank = from.bank.name,
+            urlBank = from.bank.url,
+            phoneBank = from.bank.phone,
+            cityBank = from.bank.city
+        )
 }

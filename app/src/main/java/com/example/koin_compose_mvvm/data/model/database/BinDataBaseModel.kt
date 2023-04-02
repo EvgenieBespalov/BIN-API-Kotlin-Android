@@ -1,6 +1,12 @@
 package com.example.koin_compose_mvvm.data.model.database
 
+import androidx.room.Entity
+import androidx.room.PrimaryKey
+
+@Entity(tableName = "bin_data")
 data class BinDataBaseModel(
+    @PrimaryKey
+    val id: String,
     val bin: String,
     val scheme: String? = null,
     val lengthNumber: String? = null,
@@ -14,7 +20,8 @@ data class BinDataBaseModel(
     val nameCountry: String? = null,
     val emojiCountry: String? = null,
     val currencyCountry: String? = null,
-    val coordinatesCountry: String? = null,
+    val latitudeCountry: String? = null,
+    val longitudeCountry: String? = null,
 
     val nameBank: String? = null,
     val urlBank: String? = null,

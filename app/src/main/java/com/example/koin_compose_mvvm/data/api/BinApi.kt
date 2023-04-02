@@ -6,5 +6,5 @@ import retrofit2.http.Path
 
 interface BinApi {
     @GET("/{bin}")
-    suspend fun getData(@Path("bin") bin: Int): MainDataApiModel
+    suspend fun getDataApi(@Path("bin") bin: String): MainDataApiModel
 }
