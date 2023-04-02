@@ -34,8 +34,6 @@ class BinHistoryFragment : Fragment(R.layout.fragment_bin_history)  {
         binHistory?.adapter = BinHistoryAdapter(::handleLoanClick)
 
         viewModel.state.observe(viewLifecycleOwner, ::handleState)
-
-
     }
 
     override fun onResume(){
