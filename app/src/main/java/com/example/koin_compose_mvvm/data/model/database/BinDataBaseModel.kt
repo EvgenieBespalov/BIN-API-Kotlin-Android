@@ -7,6 +7,7 @@ import androidx.room.PrimaryKey
 data class BinDataBaseModel(
     @PrimaryKey
     val id: String,
+    val date: String,
     val bin: String,
     val scheme: String? = null,
     val lengthNumber: String? = null,
