@@ -3,8 +3,12 @@ package com.example.koin_compose_mvvm.screen
 import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
+import android.view.LayoutInflater
 import android.view.View
+import android.view.ViewGroup
 import android.widget.*
+import androidx.compose.ui.platform.ComposeView
+import androidx.compose.ui.platform.ViewCompositionStrategy
 import androidx.core.view.isVisible
 import org.koin.androidx.viewmodel.ext.android.viewModel
 import androidx.fragment.app.Fragment
@@ -12,8 +16,21 @@ import com.example.koin_compose_mvvm.R
 import com.example.koin_compose_mvvm.domain.entity.MainData
 import com.example.koin_compose_mvvm.presentation.FindBinUiState
 import com.example.koin_compose_mvvm.presentation.FindBinViewModel
+import com.example.koin_compose_mvvm.screen.compose.FindBinScreen
+import com.google.accompanist.themeadapter.material.MdcTheme
 
 class FindBinFragment : Fragment(R.layout.fragment_find_bin)  {
+   /* override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? =
+        ComposeView(requireContext()).apply {
+            setViewCompositionStrategy(ViewCompositionStrategy.DisposeOnViewTreeLifecycleDestroyed)
+            setContent {
+                MdcTheme {
+                    FindBinScreen()
+                }
+            }
+        }*/
+
+
     private val progressBar get() = requireView().findViewById<ProgressBar>(R.id.binCardProgressBar)
     private val errorText get() = requireView().findViewById<TextView>(R.id.binCardErrorText)
 
@@ -150,9 +167,9 @@ class FindBinFragment : Fragment(R.layout.fragment_find_bin)  {
             null -> countryLatitudeTextView.isVisible = false
             else -> countryLatitudeTextView.setText(bin.country.latitude)
         }
-        when(bin.country.longitude){
+     /*   when(bin.country.longitude){
             null -> countryLongitudeTextView.isVisible = false
             else -> countryLongitudeTextView.setText(bin.country.longitude)
-        }
+        }*/
     }
 }
