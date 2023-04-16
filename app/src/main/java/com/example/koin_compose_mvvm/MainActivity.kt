@@ -16,6 +16,7 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
+
         adapter = SectionsPageAdapter(this)
 
         viewPager = findViewById(R.id.pager)

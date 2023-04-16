@@ -19,15 +19,27 @@ import com.example.koin_compose_mvvm.presentation.FindBinViewModel
 import com.example.koin_compose_mvvm.screen.compose.FindBinScreen
 import com.google.accompanist.themeadapter.material.MdcTheme
 
+
 class FindBinFragment : Fragment(R.layout.fragment_find_bin)  {
-   /* override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? =
+ /*   override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? =
         ComposeView(requireContext()).apply {
             setViewCompositionStrategy(ViewCompositionStrategy.DisposeOnViewTreeLifecycleDestroyed)
-            setContent {
-                MdcTheme {
-                    FindBinScreen()
+
+            if(true){
+                setContent {
+                    MdcTheme {
+                        FindBinScreen()
+                    }
                 }
             }
+            else{
+                setContent {
+                    MdcTheme {
+                        FindBinScreen()
+                    }
+                }
+            }
+
         }*/
 
 
