@@ -3,12 +3,10 @@ package com.example.koin_compose_mvvm.screen
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.koin_compose_mvvm.R
 import com.example.koin_compose_mvvm.domain.entity.MainData
-import java.util.Calendar.getInstance
 
 class BinHistoryAdapter(private val userClickListener: (MainData) -> Unit) : RecyclerView.Adapter<HistoryViewHolder>() {
 

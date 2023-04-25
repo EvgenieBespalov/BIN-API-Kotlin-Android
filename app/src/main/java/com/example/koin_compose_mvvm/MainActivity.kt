@@ -2,7 +2,6 @@ package com.example.koin_compose_mvvm
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import androidx.viewpager.widget.ViewPager
 import androidx.viewpager2.widget.ViewPager2
 import com.example.koin_compose_mvvm.screen.SectionsPageAdapter
 import com.google.android.material.tabs.TabLayout
@@ -22,7 +21,7 @@ class MainActivity : AppCompatActivity() {
         viewPager = findViewById(R.id.pager)
         viewPager.adapter = adapter
 
-         val tabLayout = findViewById<TabLayout>(R.id.tabs)
+        val tabLayout = findViewById<TabLayout>(R.id.tabs)
 
         TabLayoutMediator(tabLayout, viewPager) { tab, position ->
             tab.text = when(position){

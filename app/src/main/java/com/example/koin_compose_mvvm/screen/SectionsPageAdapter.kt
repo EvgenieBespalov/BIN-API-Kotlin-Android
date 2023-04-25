@@ -7,7 +7,6 @@ import androidx.viewpager2.adapter.FragmentStateAdapter
 class SectionsPageAdapter(fragment: FragmentActivity) : FragmentStateAdapter(fragment) {
     private var numFragment = true
 
-    private var fragments = 0
     override fun getItemCount(): Int = 2
 
     override fun createFragment(position: Int): Fragment {

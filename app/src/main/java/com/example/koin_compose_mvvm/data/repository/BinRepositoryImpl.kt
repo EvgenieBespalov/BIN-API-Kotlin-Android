@@ -3,7 +3,6 @@ package com.example.koin_compose_mvvm.data.repository
 import com.example.koin_compose_mvvm.data.api.BinApi
 import com.example.koin_compose_mvvm.data.converter.BinConverter
 import com.example.koin_compose_mvvm.data.dao.BinDAO
-import com.example.koin_compose_mvvm.data.model.database.BinDataBaseModel
 import com.example.koin_compose_mvvm.domain.entity.MainData
 import com.example.koin_compose_mvvm.domain.repository.BinRepository
 import kotlinx.coroutines.Dispatchers

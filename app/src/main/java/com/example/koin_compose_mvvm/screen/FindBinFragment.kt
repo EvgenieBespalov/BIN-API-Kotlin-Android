@@ -3,12 +3,8 @@ package com.example.koin_compose_mvvm.screen
 import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
-import android.view.LayoutInflater
 import android.view.View
-import android.view.ViewGroup
 import android.widget.*
-import androidx.compose.ui.platform.ComposeView
-import androidx.compose.ui.platform.ViewCompositionStrategy
 import androidx.core.view.isVisible
 import org.koin.androidx.viewmodel.ext.android.viewModel
 import androidx.fragment.app.Fragment
@@ -16,32 +12,9 @@ import com.example.koin_compose_mvvm.R
 import com.example.koin_compose_mvvm.domain.entity.MainData
 import com.example.koin_compose_mvvm.presentation.FindBinUiState
 import com.example.koin_compose_mvvm.presentation.FindBinViewModel
-import com.example.koin_compose_mvvm.screen.compose.FindBinScreen
-import com.google.accompanist.themeadapter.material.MdcTheme
 
 
 class FindBinFragment : Fragment(R.layout.fragment_find_bin)  {
- /*   override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? =
-        ComposeView(requireContext()).apply {
-            setViewCompositionStrategy(ViewCompositionStrategy.DisposeOnViewTreeLifecycleDestroyed)
-
-            if(true){
-                setContent {
-                    MdcTheme {
-                        FindBinScreen()
-                    }
-                }
-            }
-            else{
-                setContent {
-                    MdcTheme {
-                        FindBinScreen()
-                    }
-                }
-            }
-
-        }*/
-
 
     private val progressBar get() = requireView().findViewById<ProgressBar>(R.id.binCardProgressBar)
     private val errorText get() = requireView().findViewById<TextView>(R.id.binCardErrorText)
@@ -59,7 +32,7 @@ class FindBinFragment : Fragment(R.layout.fragment_find_bin)  {
     private val typeContent get() = requireView().findViewById<LinearLayout>(R.id.typeContent)
     private val prepaidContent get() = requireView().findViewById<LinearLayout>(R.id.prepaidContent)
     private val countryNameContent get() = requireView().findViewById<LinearLayout>(R.id.countryNameContent)
-    private val countryLatitudeContent get() = requireView().findViewById<LinearLayout>(R.id.countryLatitudeContent)
+    private val countryCoordinateContent get() = requireView().findViewById<LinearLayout>(R.id.countryCoordinateContent)
 
     private val viewModel: FindBinViewModel by viewModel()
 
@@ -153,6 +126,10 @@ class FindBinFragment : Fragment(R.layout.fragment_find_bin)  {
             null -> brandContent.isVisible = false
             else -> brandTextView.setText(bin.brand)
         }
+        when(bin.number.length){
+            null -> cardLengthContent.isVisible = false
+            else -> cardLengthTextView.setText(bin.number.length)
+        }
         when(bin.number.luhn){
             null -> cardLuhnContent.isVisible = false
             else -> cardLuhnTextView.setText(bin.number.luhn)
@@ -175,13 +152,13 @@ class FindBinFragment : Fragment(R.layout.fragment_find_bin)  {
                 countryNameTextView.setText(bin.country.name)
                 countryEmojiTextView.setText(bin.country.emoji)}
         }
-        when(bin.country.latitude){
-            null -> countryLatitudeTextView.isVisible = false
-            else -> countryLatitudeTextView.setText(bin.country.latitude)
+        if(bin.country.latitude == null || bin.country.longitude == null) {
+            countryCoordinateContent.isVisible = false
         }
-     /*   when(bin.country.longitude){
-            null -> countryLongitudeTextView.isVisible = false
-            else -> countryLongitudeTextView.setText(bin.country.longitude)
-        }*/
+        else{
+            countryLatitudeTextView.setText(bin.country.latitude)
+            countryLongitudeTextView.setText(bin.country.longitude)
+        }
+
     }
 }
